@@ -1,0 +1,281 @@
+
+@model WebApplication14.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Product Details | ProductHub</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        .navbar {
+            background: #172554;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-link {
+            color: #dbeafe;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 900px;
+            margin: 55px auto;
+        }
+
+        .back-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .details-card {
+            background: white;
+            border-radius: 16px;
+            padding: 45px;
+            margin-top: 25px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+            border: 1px solid #e5e7eb;
+        }
+
+        .category {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 22px 0 12px;
+            color: #111827;
+        }
+
+        .product-id {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .footer {
+            background: #172554;
+            color: #94a3b8;
+            text-align: center;
+            padding: 28px;
+            margin-top: 80px;
+            font-size: 13px;
+        }
+
+        @@media (max-width: 600px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .details-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Product<span>Hub</span>
+        </div>
+
+        <a href="@Url.Action("Index", "Product")"
+           class="nav-link">
+            Back to Catalog
+        </a>
+
+    </nav>
+
+
+    <!-- Product Details -->
+
+    <main class="container">
+
+        <a href="@Url.Action("Index", "Product")"
+           class="back-link">
+            ← Back to Products
+        </a>
+
+
+        <div class="details-card">
+
+            <span class="category">
+                @Model.Category
+            </span>
+
+            <h1>
+                @Model.Name
+            </h1>
+
+            <div class="product-id">
+                Product ID: #@Model.Id
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-label">
+                PRODUCT PRICE
+            </div>
+
+            <div class="price">
+                ₹@Model.Price.ToString("N0")
+            </div>
+
+            <div class="info-row">
+
+                <div class="info-label">
+                    Product Name
+                </div>
+
+                <strong>
+                    @Model.Name
+                </strong>
+
+            </div>
+
+            <div class="info-row">
+
+                <div class="info-label">
+                    Category
+                </div>
+
+                <strong>
+                    @Model.Category
+                </strong>
+
+            </div>
+
+            <div class="info-row">
+
+                <div class="info-label">
+                    Product ID
+                </div>
+
+                <strong>
+                    @Model.Id
+                </strong>
+
+            </div>
+
+            <a href="@Url.Action("Index", "Product")"
+               class="btn">
+                Back to Catalog
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © @DateTime.Now.Year ProductHub.
+            All Rights Reserved.
+        </p>
+
+        <p style="margin-top: 8px;">
+            ASP.NET MVC | Product Details
+        </p>
+
+    </footer>
+
+</body>
+</html>
